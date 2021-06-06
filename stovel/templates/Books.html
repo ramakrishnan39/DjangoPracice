@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stovel - Books</title>
+        <link rel="stylesheet" href="Common/common.css" type="text/css">                
+        <link rel="icon" href="Images/app_icon.png" type="image/x-icon" />
+               
+        <script type="text/javascript" src="Js/jquery_file.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="functions.js" ></script>
+        <script>
+            $(function ()
+            {
+                $("#head1").load("Common/Headpart.html");
+                $("#foot1").load("Common/Footpart.html");
+                $("#drop_down").load("Common/dropdown.html");
+            }
+            );
+        </script>
+    </head>
+    <body>
+        <div id="head1"> </div>
+        <div id="home" >
+            <div id="home_left">
+                <div id="drop_down"></div>
+            </div>
+            <div id="home_right">
+                Books
+            </div>           
+        </div>
+        <div id="foot1"> </div>
+    </body>
+    
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <form action="/edit/" method="POST" id="frm_edit" > 
+        <span class="label"> First Name</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="txt_uname_edit" value="{{ user.first_name }}" ><br/>
+        <span class="label"> Last Name </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="txt_uname_edit" value="{{ user.last_name }}" ><br/>
+        <span class="label"> Mail ID</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="txt_uname_edit" value="{{ user.email }}" ><br/>
+        
+        <input type="submit" value="Edit Profile">
+    </form>
+</div>
+{% endblock %}

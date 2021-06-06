@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stovel</title>
+
+    <link rel="stylesheet" href="{% static "css/Home_page.css" %}" type="text/css">
+    <link rel="stylesheet" href="{% static "css/common.css" %}" type="text/css">
+    <link rel="icon" href="{% static "images/app_icon.png" %}" type="image/x-icon" />
+
+    <script type="text/javascript" src="{% static "js/jquery_file.js" %}" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "js/functions.js" %}"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <image alt="Image of Stovel app " src="{% static "images/app_icon.png" %}" width="30px" height="30px" /> Stovel
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"> <img src="{% static "images/circled_menu.png" %}" width="25px" height="25px" > </button>
+        <div class="dropdown-content">
+            {% for x,y in pages.items %}
+            <a href="{{y}}">{{x}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="home_right"> {{ title }} </div>
+    {% block content %}
+    {% endblock %}
+    <div class="footer"> Creation of this site is in Progress.<br/>
+        You are seeing the beta version of this application.
+    </div>
+
+</body>
+
+</html>

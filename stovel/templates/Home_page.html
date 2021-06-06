@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="home_content">
+    <br/>
+    {% if user.is_authenticated %}
+    <div> Welcome {{ user.first_name }} ! </div>
+    {% endif %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    <form action="../savebook/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br />
+        <input type="text" name="txt_bookname" placeholder="Book name" required="" />
+        <input type="text" name="txt_authname" placeholder="Author name" required=""/> 
+        <input type="text" name="txt_pubname" placeholder="Publication name" required=""/> 
+        <label for="file_book" class="lbl_book">
+            Click here to add your book ! </label>
+        <div id="f_name" class="b_f_name"> </div>
+        <input type="file" name="file_bk" id="file_book" onchange="show_file()" hidden="" /><br />
+        <input type="submit" name="btn_submit" id="btn_submit" value="Share post">
+    </form>
+    <br />
+</div>
+<div>
+
+{% for bk in books %}
+    <div>
+        {{ bk.book_name }} : {{ bk.author_name }} : {{ bk.publication_name }} <br/> <br/>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

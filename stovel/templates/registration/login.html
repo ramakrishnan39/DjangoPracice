@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="login_part">
+    Please login to explore more!!<br />
+    <br />
+    <form action="../login/" id="form_login" name="form_log" method="POST">
+        {% csrf_token %}
+        Enter your username &nbsp;&nbsp;&nbsp; : <input type="text" name="txt_uname" id="txt_user"
+            accesskey="u" required="" /><br />
+        Enter your password &nbsp;&nbsp;&nbsp;&nbsp; : <input type="password" name="pwd_login" id="p_pass"
+            accesskey="p" required="" />
+        <br />
+        <input type="Submit" name="btn_login" id="button_login" value="Login" />
+        <input type="button" id="btn_sign_clr" value="Clear" onclick="document.getElementById('form_login').reset()">
+    </form>
+    <div>
+        {% for messege in messeges %}
+        <p> {{ messege }} </p>
+        {% endfor %}
+    </div>
+    <br/>
+    <div> <a href="../" > Back </div> <br/>
+</div>
+{% endblock %}

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Book
+from .models import Book, Friends
 from . import models
 # Create your views here.
 
@@ -35,9 +35,7 @@ def m_login(request):
     if request.method == 'POST':
         uname = request.POST['txt_uname']
         passwd = request.POST['pwd_login']
-        print(f"{uname} : {passwd}" )
         user = authenticate(username=uname,password=passwd)
-        print(user)
         if user is not None:
             if user.is_active:
                 login(request,user)
@@ -94,8 +92,9 @@ def m_savebook(request):
         b_name = request.POST['txt_bookname']
         a_name = request.POST['txt_authname']
         p_name = request.POST['txt_pubname']
+        p_usr = request.user
         bk = Book(book_name=b_name, author_name=a_name,
-                  publication_name=p_name)
+                  publication_name=p_name, posted_by=p_usr)
         bk.save()
         bk = Book.objects.all()
         cont = {
@@ -105,5 +104,16 @@ def m_savebook(request):
 
 
 def m_edit(request):
+    return render(request,'home')
 
-    return render()
+def m_user(request):
+    usr= User.objects.get(id=1)
+    cont={'pages': ps, 'title': 'User Profile ', 'post_user': usr}    
+    if request.method == 'POST':
+        frnd=Friends.objects.get(usr=usr)
+        
+        cont={'pages': ps, 'title': 'User Profile ', 'post_user': usr, 'friends':frnd}    
+        return  render(request,'User_page.html', context=cont )
+    else:        
+        return  render(request,'User_page.html', context=cont )
+     

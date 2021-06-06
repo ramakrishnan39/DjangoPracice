@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'stovel.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rama',
+        'NAME': 'newdb',
         'USER' : 'postgres',
         'PASSWORD' : 'Sysadmin1',
         'HOST' : 'localhost',

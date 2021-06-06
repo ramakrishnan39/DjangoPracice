@@ -27,7 +27,7 @@
 
 {% for bk in books %}
     <div>
-        {{ bk.book_name }} : {{ bk.author_name }} : {{ bk.publication_name }} <br/> <br/>
+       <a href="../user" > {{ bk.posted_by.first_name }} </a> {{ bk.book_name }} : {{ bk.author_name }} : {{ bk.publication_name }}  <br/> <br/>
     </div>
 {% endfor %}
 </div>

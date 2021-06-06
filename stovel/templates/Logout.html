@@ -3,7 +3,7 @@
 {% block content %}
     <body>
         <div >You have successfully logged out of the Stovel app <br/><br/>
-            <form action="../" id="logout" method="POST" >
+            <form action="../login/" id="logout" method="GET" >
                 {% csrf_token %}
                 <label for="btn_log_in">Please login again if you wish to continue...&nbsp;&nbsp;</label>
                 <input type="submit" value="Login" class="link_login">

@@ -106,14 +106,14 @@ def m_savebook(request):
 def m_edit(request):
     return render(request,'home')
 
-def m_user(request):
-    usr= User.objects.get(id=1)
-    cont={'pages': ps, 'title': 'User Profile ', 'post_user': usr}    
+def m_user(request, usr):
+    user_post = User.objects.get(username=usr)
+    cont={'pages': ps, 'title': 'User Profile ', 'post_user':user_post}    
     if request.method == 'POST':
-        frnd=Friends.objects.get(usr=usr)
         
-        cont={'pages': ps, 'title': 'User Profile ', 'post_user': usr, 'friends':frnd}    
-        return  render(request,'User_page.html', context=cont )
-    else:        
-        return  render(request,'User_page.html', context=cont )
-     
+        return render(request,'User_page.html', context=cont )
+    elif request.method == 'GET':
+        return render(request,'User_page.html', context=cont )
+    else:
+        cont={'pages': ps, 'title': 'User Profile ',}
+        return render(request,'User_page.html', context=cont )

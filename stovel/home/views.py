@@ -79,8 +79,17 @@ def m_friends(request):
 
 
 def m_profile(request):
-    return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile'})
-
+    if request.method == 'GET':
+        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile'})
+    elif request.method == 'POST':
+        ufname = request.POST['txt_ed_fname']
+        ulname = request.POST['txt_ed_lname']
+        umail = request.POST['txt_ed_mail']
+        request.user.first_name = ufname
+        request.user.last_name = ulname
+        request.user.umail = umail
+        request.user.save()
+        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile'})
 
 def m_logout(request):
     auth.logout(request)
@@ -104,13 +113,13 @@ def m_savebook(request):
 
 
 def m_edit(request):
-    return render(request,'home')
+    return render(request,'profile/')
 
 def m_user(request, usr):
     user_post = User.objects.get(username=usr)
     cont={'pages': ps, 'title': 'User Profile ', 'post_user':user_post}    
     if request.method == 'POST':
-        
+
         return render(request,'User_page.html', context=cont )
     elif request.method == 'GET':
         return render(request,'User_page.html', context=cont )

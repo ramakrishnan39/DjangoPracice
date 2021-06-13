@@ -11,7 +11,7 @@ urlpatterns = [
     path('friends/',views.m_friends, name='friends'),
     path('logout/', views.m_logout, name='logout'), 
     path('savebook/',views.m_savebook,name='savebook'),
-    path('edit/',views.m_edit,name="edit"),
+    path('edit/',views.m_profile,name="edit"),
     path('accounts/',include('django.contrib.auth.urls'))
 ]
 

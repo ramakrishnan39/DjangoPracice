@@ -79,11 +79,8 @@ WSGI_APPLICATION = 'stovel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newdb',
-        'USER' : 'postgres',
-        'PASSWORD' : 'Sysadmin1',
-        'HOST' : 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'stoveldb',
     }
 }
 

@@ -136,3 +136,9 @@ html
     height: 500px;
     width: 100%;
 }
+.title{
+    font-family: 'Tahoma';
+    font-weight: bold;
+    font-size: larger;
+    font-style: normal;
+}

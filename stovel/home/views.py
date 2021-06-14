@@ -79,8 +79,9 @@ def m_friends(request):
 
 
 def m_profile(request):
+    books = Book.objects.filter(posted_by=request.user)
     if request.method == 'GET':
-        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile'})
+        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile', 'books':books})
     elif request.method == 'POST':
         ufname = request.POST['txt_ed_fname']
         ulname = request.POST['txt_ed_lname']
@@ -89,7 +90,7 @@ def m_profile(request):
         request.user.last_name = ulname
         request.user.umail = umail
         request.user.save()
-        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile'})
+        return render(request, 'Profile.html', {'pages': ps, 'title' : 'Profile','books':books})
 
 def m_logout(request):
     auth.logout(request)

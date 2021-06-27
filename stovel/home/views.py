@@ -102,9 +102,10 @@ def m_savebook(request):
         b_name = request.POST['txt_bookname']
         a_name = request.POST['txt_authname']
         p_name = request.POST['txt_pubname']
+        b_file = request.FILES['file_bk']
         p_usr = request.user
         bk = Book(book_name=b_name, author_name=a_name,
-                  publication_name=p_name, posted_by=p_usr)
+                  publication_name=p_name, posted_by=p_usr, book_file= b_file)
         bk.save()
         bk = Book.objects.all()
         cont = {

@@ -8,6 +8,7 @@ class Book(models.Model):
     author_name = models.TextField()
     publication_name = models.TextField()
     posted_by = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    book_file = models.FileField(upload_to='books',blank=True, default=None)
 
 class Friends(models.Model):
     usr = models.CharField(max_length=200)

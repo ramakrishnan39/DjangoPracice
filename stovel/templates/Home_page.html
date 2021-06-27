@@ -15,10 +15,7 @@
         <input type="text" name="txt_bookname" placeholder="Book name" required="" />
         <input type="text" name="txt_authname" placeholder="Author name" required=""/> 
         <input type="text" name="txt_pubname" placeholder="Publication name" required=""/> 
-        <label for="file_book" class="lbl_book">
-            Click here to add your book ! </label>
-        <div id="f_name" class="b_f_name"> </div>
-        <input type="file" name="file_bk" id="file_book" onchange="show_file()" hidden="" /><br />
+        <input type="file" name="file_bk" id="file_book" /><br />
         <input type="submit" name="btn_submit" id="btn_submit" value="Share post">
     </form>
     <br />
@@ -27,7 +24,10 @@
 
 {% for bk in books %}
     <div>
-       <a href="../user/{{ bk.posted_by.username }}" class="link_login"> {{ bk.posted_by.first_name }} </a> {{ bk.book_name }} : {{ bk.author_name }} : {{ bk.publication_name }}  <br/> <br/>
+       <a href="../user/{{ bk.posted_by.username }}" class="link_login"> {{ bk.posted_by.first_name }} </a>  <a href="{{ bk.book_file.url }}" download> {{ bk.book_name }} </a> 
+       : {{ bk.author_name }} : {{ bk.publication_name }} 
+       
+       <br/> <br/>
     </div>
 {% endfor %}
 </div>

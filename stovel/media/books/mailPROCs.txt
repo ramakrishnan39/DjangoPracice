@@ -1,0 +1,58 @@
+
+1. Configure UTL_MAIL
+
+@?/rdbms/admin/utlmail.sql
+@?/rdbms/admin/utlsmtp.sql
+@?/rdbms/admin/prvtmail.plb
+
+2. Set Outgoing Server address (In My case it is localhost)
+
+alter system set smtp_out_server='localhost';
+
+3. If required , Then configure ACL
+
+Create ROLE ACL_ADMIN;
+grant Create session to ACL_ADMIN;
+grant execute on utl_mail to ACL_ADMIN;
+grant execute on utl_smtp to ACL_ADMIN;
+
+
+begin
+DBMS_NETWORK_acl_ADMIN.ADD_PRIVILEGE(
+acl => 'acl_admin.xml',
+principal => 'C##ACL_ADMIN',
+is_grant => true,
+privilege => 'resolve'
+);
+COMMIT;
+END;
+/
+
+
+BEGIN
+DBMS_NETWORK_ACL_ADMIN.ASSIGN_ACL (
+acl => 'acl_admin.xml',
+host => '*');
+COMMIT;
+END;
+/
+
+select acl , host , lower_port , upper_port from DBA_NETWORK_ACLS;
+select acl , principal , privilege , is_grant from DBA_NETWORK_ACL_PRIVILEGES;
+
+4. Now , Grant This Role to ANy user who want to send Mail:
+
+grant C##ACL_ADMIN to C##RAMA;
+
+5. Now , try to send a test mail:
+
+BEGIN
+UTL_MAIL.SEND(sender => 'donbenkrish@gmail.com',
+recipients => 'ramakrishnanp30798@gmail.com',
+subject => 'Test Mail',
+message => 'Hi, This is just a test mail');
+EXCEPTION
+WHEN OTHERS THEN
+RAISE_APPLICATION_ERROR(-20001,'The following error has occured:' ||sqlerrm);
+END;
+/

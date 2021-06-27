@@ -1,0 +1,8 @@
+
+37:10 you need to mention `import os` at top for it to work.
+43:55 - Whatever text you type in, it converts to Hex & gets the colour.
+53:50 - if you have to restart everything, these are the commands.
+1:13:00 - Changes to make in settings.py so that all js/css/images/etc work properly.
+1:19:20 - to make all the changes a quicker way to do is select similar text using Ctrl + D (at least in VS Code & Atom), which will bring up multiple cursors & then you can edit it in 1 shot.
+1:26:50 - Very simple Destinations class creation, nice.
+1:57:40 - Change settings.py to set which DB you're using & plus various other preparations to connect DB to Django.

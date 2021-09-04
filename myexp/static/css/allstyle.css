@@ -1,0 +1,20 @@
+/*HTML parts */
+body
+{
+    background-color: cornflowerblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+}
+/* classes */
+.textbox
+{
+    border-color: darkblue;
+}
+.label
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    font-variant: normal;
+}
+/* Specific parts */

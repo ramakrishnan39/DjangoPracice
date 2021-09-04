@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form id="frm_login" action="../login/" method="POST">
+        {% csrf_token %}
+        <span class="label"> Enter your username : </span> <input type="text" class="textbox" id="txt_sign_user" name="txt_username" /> <br/>
+        <span class="label"> Enter your password : </span> <input type="password" class="textbox" id="pwd_signin" name="pwd_signin" /><br/>
+        <span class="label"> Enter your password  Again : </span> <input type="password" class="textbox" id="pwd_signin_2" name="pwd_signin_2" /><br/>
+        <input type="submit" value="Sign Up" class="label">
+    </form>
+{% endblock %}

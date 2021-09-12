@@ -1,16 +1,29 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block content %}
-    Welcome User!
+    Welcome {{ user.first_name }}! 
+    <div id='logout' name='logout' class='logout'> 
+        <input type="button" value="Log out" onclick="logout()"> 
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" id="appdate" name='appdate' value="{{ appdate }}" onchange="viewall()" />
     <p> Please enter your expense below. </p>
     <div>
-        <input type="button" value="Add expense"     
-        <table>
-            <tr> <th> Sno </th> <th> Date </th> <th> Expense Name </th> <th> Amount </th> <th> Action </th> </tr>
-            
+        <input type="button" value="Add expense" onclick="addexpense()"> <br/>   
+        <table id="exptable"> 
+            <tr> <th> Expense name </th> <th> Amount </th> </tr>
+            {% for exp in exps %}
+            <tr>
+                <td> {{ exp.expense_name }} </td>  
+                <td> {{ exp.amount }} </td>
+                <td> <input type="button" value="✘" onclick="deleteexpense( {{ exp.id }} )" > </td>
+            </tr>    
+            {% endfor %}
         </table>
     </div>
-    <a class="linkbutton" href="entry/"> Enter the expense detail. </a> <br/>
-    <a class="linkbutton" href="viewall/"> View all of your expenses. </a> <br/>
-    <a class="linkbutton" href="viewreport/"> View report for your expenses. </a> <br/>
+    <br/><br/>
 
 {% endblock %} 
+<!---    <a href="../viewall/{{ '03-20-2021' }}"> View all </a> <br/>
+    <a href="../viewreport/"> View report </a>
+-->

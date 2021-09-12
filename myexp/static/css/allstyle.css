@@ -1,8 +1,8 @@
 /*HTML parts */
 body
 {
-    background-color: cornflowerblue;
-    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(152, 243, 183);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
 }
 /* classes */
@@ -14,7 +14,15 @@ body
 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: medium;
-    font-weight: 600;
+    font-weight: 300;
     font-variant: normal;
+}
+.linkbutton
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-size: small;
+    font-stretch: semi-condensed;
 }
 /* Specific parts */

@@ -26,3 +26,11 @@ body
     font-stretch: semi-condensed;
 }
 /* Specific parts */
+.logout
+{
+    position: absolute;
+    top:0;
+    right: 14px;
+    font-size: 30px;
+    font-weight: bold;
+}

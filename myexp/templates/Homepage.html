@@ -1,27 +1,56 @@
 {% extends 'base.html' %} 
 {% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/entrystyle.css" %}" type="text/css">
+{% endblock %}
 {% block content %}
     Welcome {{ user.first_name }}! 
     <div id='logout' name='logout' class='logout'> 
-        <input type="button" value="Log out" onclick="logout()"> 
+        <input type="button" class="btn" value="Log out" onclick="logout()"> 
     </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="date" id="appdate" name='appdate' value="{{ appdate }}" onchange="viewall()" />
-    <p> Please enter your expense below. </p>
+   
+    <input type="date" id="appdate" name='appdate' class="dtpk" value="{{ appdate }}" onchange="viewall()" />
+   
+    <br/> 
+
+    <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense"
+    onclick="show()" />
+    <div class="bgm" id="container">
+       <div class="modal">
+        <div class="close" > + </div>
+           
+            <img src="{% static "imgs/unnamed.png" %}" height="50px" width="50px" alt="expense icon">
+           
+           <form action="" >
+               <input type="text" class="inp" id="txt_expname" name="txt_expname" placeholder="Enter the expense name" required="" />
+               <input type="text" class="inp" id="txt_expamt" name="txt_expamt" placeholder="Enter the amount" required="" />
+               <input type="text" class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the expense here!" />
+               <input type="button" value="Add" class="btn" onclick="addexp()" />
+           </form>
+
+       </div>
+   </div>
+
     <div>
-        <input type="button" value="Add expense" onclick="addexpense()"> <br/>   
-        <table id="exptable"> 
-            <tr> <th> Expense name </th> <th> Amount </th> </tr>
+       <!--- <input type="button" value="Add expense" onclick="addexpense()"> 
+        -->
+       <br/>   
+        <table id="exptable" class="tbl" > 
+            <tr> <th> Expense name </th> <th> Amount </th> <th> Description about the Expense </th></tr>
             {% for exp in exps %}
             <tr>
                 <td> {{ exp.expense_name }} </td>  
                 <td> {{ exp.amount }} </td>
+                <td> {{ exp.expense_desc }} </td>
                 <td> <input type="button" value="✘" onclick="deleteexpense( {{ exp.id }} )" > </td>
             </tr>    
             {% endfor %}
         </table>
     </div>
     <br/><br/>
+
+    <script type="text/javascript" src="{% static "js/entry.js" %}" ></script>   
 
 {% endblock %} 
 <!---    <a href="../viewall/{{ '03-20-2021' }}"> View all </a> <br/>

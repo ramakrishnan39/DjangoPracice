@@ -1,11 +1,38 @@
 /*HTML parts */
 body
 {
-    background-color: rgb(152, 243, 183);
+    background-image: linear-gradient(green, blue);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
+    color: white;
+    height: 580px;
+    width: 700px;
 }
 /* classes */
+.btn
+{
+    font-size: medium;
+    color:white;
+    background-color:rgb(226, 94, 42);
+    border-color: black;
+    border-radius:0px 20px 0px 20px;
+    padding: 5px;
+    text-decoration-line: none;
+}
+.dtpk
+{
+    font-size: 15px;
+    font-weight: bold;
+    color:darkblue;
+    background-color: bisque;
+    border-radius: 10px;
+}
+.ftr
+{
+    bottom: 3%;
+    left: 3%;
+    position: absolute;
+}
 .textbox
 {
     border-color: darkblue;
@@ -16,6 +43,11 @@ body
     font-size: medium;
     font-weight: 300;
     font-variant: normal;
+}
+
+.tbl
+{
+    background-color:blueviolet;
 }
 .linkbutton
 {

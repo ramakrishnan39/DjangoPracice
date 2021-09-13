@@ -1,36 +1,5 @@
-function js_setdate()
-{
-    //document.getElementById("appdate").valueAsDate = new Date()
-}
-
-function js_addrow()
-{
-    var numrows = document.getElementById("exptable").rows.length;
-
-    var btnsub = document.createElement("BUTTON");
-    var t1 = document.createTextNode("Submit");
-    btnsub.appendChild(t1);
-    btnsub.onclick = "js_addrow()";
-    var btndel = document.createElement("BUTTON");
-    var t2 = document.createTextNode("Delete");
-    btndel.appendChild(t2);
-
-
-    var inpdate = document.createElement("INPUT");
-    inpdate.setAttribute("type", "Date");
-    
-    var inpexpname = document.createElement("INPUT");
-    inpexpname.setAttribute("type", "Text")
-
-    var inpamount = document.createElement("INPUT");
-    inpamount.setAttribute("type", "Number")
-    
-    var table = document.getElementById("exptable");
-    var row = table.insertRow();
-    var cell1 = row.insertCell(0);
-    cell1.appendChild(inpexpname);
-    var cell2 = row.insertCell(1);
-    cell2.appendChild(inpamount);
+function show() {
+    document.getElementById('container').setAttribute("style", "display:flex");
 }
 
 function addexpense() {
@@ -41,7 +10,20 @@ function addexpense() {
     if (amount === null || typeof amount ==="") { amount = 0 }
     else { amount = Number(amount) }
     window.location.href ="/add/" + expense_name + "/" + amount + "/" + sdate;
-    
+}
+
+function addexp()
+{
+    var expense_name = document.getElementById('txt_expname').value;
+    var amount = document.getElementById('txt_expamt').value;
+    var desc = document.getElementById('txt_description').value;
+    var ddate = document.getElementById('appdate').value;
+    var sdate = ddate.toString();
+    if (amount === null || typeof amount ==="") { amount = 0 }
+    else { amount = Number(amount) }
+
+    if (desc === null || desc === "") { desc = "None" }
+    window.location.href ="/add/" + expense_name + "/" + amount +"/"+ desc + "/" + sdate;
 }
 
 function deleteexpense(expid) {

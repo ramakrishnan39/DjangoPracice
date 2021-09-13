@@ -7,4 +7,5 @@ class Expense(models.Model):
     userid = models.ForeignKey(User,on_delete=models.DO_NOTHING)
     expense_date = models.DateField(default=date.today)
     expense_name = models.CharField(max_length=150)
+    expense_desc = models.CharField(max_length=300)
     amount = models.IntegerField()

@@ -57,9 +57,9 @@ def v_home(request,sdate):
         return render(request,'Homepage.html',context)
 
 
-def v_add(request,expense, amount,expdate):
+def v_add(request,expense, amount,desc,expdate):
     dexpdate=datetime.strptime(expdate,"%Y-%m-%d")
-    objExp=Expense(userid=request.user,expense_date=dexpdate,expense_name=expense,amount=amount)
+    objExp=Expense(userid=request.user,expense_date=dexpdate,expense_name=expense,expense_desc=desc , amount=amount)
     objExp.save()
     return redirect(f"/home/{expdate}")
 

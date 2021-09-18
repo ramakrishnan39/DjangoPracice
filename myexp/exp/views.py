@@ -4,9 +4,11 @@ from django.urls.base import reverse
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
+from pandas.core.series import Series
 from .models import Expense
 from datetime import date,datetime
-
+from matplotlib import pyplot as pt
+import numpy as np,pandas as pd
 # Create your views here.
 def v_index(request):
     return render(request, 'Index.html')
@@ -53,12 +55,16 @@ def v_home(request,sdate):
     if request.method== 'GET':
         ddate=datetime.strptime(sdate,"%Y-%m-%d")
         ex = Expense.objects.filter(expense_date=ddate)
-        context = {'exps':ex, 'appdate':sdate}
+        totexp=0
+        for e in ex:
+            totexp = totexp + e.amount
+        context = {'exps':ex, 'appdate':sdate , 'total':totexp}
         return render(request,'Homepage.html',context)
 
 
 def v_add(request,expense, amount,desc,expdate):
     dexpdate=datetime.strptime(expdate,"%Y-%m-%d")
+
     objExp=Expense(userid=request.user,expense_date=dexpdate,expense_name=expense,expense_desc=desc , amount=amount)
     objExp.save()
     return redirect(f"/home/{expdate}")
@@ -69,6 +75,13 @@ def v_delete(request,expid,expdate):
     exp.delete()
     return redirect(f"/home/{expdate}")
 
+def v_report(request,mon,year):
+    exp = Expense.objects.filter(expense_month = mon)
+    exp_arr = [ex1 for ex1 in exp] 
+    pt.plot.bar(exp_arr)
+    
+    
+    return render(request,'Reports.html')
 
 def v_logout(request):
     auth.logout(request)

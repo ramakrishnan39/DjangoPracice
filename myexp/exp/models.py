@@ -9,3 +9,5 @@ class Expense(models.Model):
     expense_name = models.CharField(max_length=150)
     expense_desc = models.CharField(max_length=300)
     amount = models.IntegerField()
+    expense_month = models.CharField(max_length=12)
+    expense_year = models.CharField(max_length=4)

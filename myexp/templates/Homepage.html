@@ -16,6 +16,13 @@
 
     <input type="button" class="btn" id="btn_showAdd" name="btn_showAdd" value="Add Expense"
     onclick="show()" />
+    <br/>
+    <br/>
+    <div>
+       <span style="font-style: italic; color:blue"> Total expense amount: {{ total }} </span>
+    </div>
+
+
     <div class="bgm" id="container">
        <div class="modal">
         <div class="close" > + </div>
@@ -25,7 +32,7 @@
            <form action="" >
                <input type="text" class="inp" id="txt_expname" name="txt_expname" placeholder="Enter the expense name" required="" />
                <input type="text" class="inp" id="txt_expamt" name="txt_expamt" placeholder="Enter the amount" required="" />
-               <input type="text" class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the expense here!" />
+               <textarea  rows=3 cols=10 class="inp" id="txt_description" name="txt_description" placeholder="Feel free to describe the expense here!"></textarea>
                <input type="button" value="Add" class="btn" onclick="addexp()" />
            </form>
 
@@ -33,8 +40,6 @@
    </div>
 
     <div>
-       <!--- <input type="button" value="Add expense" onclick="addexpense()"> 
-        -->
        <br/>   
         <table id="exptable" class="tbl" > 
             <tr> <th> Expense name </th> <th> Amount </th> <th> Description about the Expense </th></tr>
@@ -43,12 +48,19 @@
                 <td> {{ exp.expense_name }} </td>  
                 <td> {{ exp.amount }} </td>
                 <td> {{ exp.expense_desc }} </td>
-                <td> <input type="button" value="✘" onclick="deleteexpense( {{ exp.id }} )" > </td>
+                <td> &nbsp;&nbsp;&nbsp; <input type="button" value="✘" onclick="deleteexpense( {{ exp.id }} )" > </td>
             </tr>    
             {% endfor %}
         </table>
     </div>
     <br/><br/>
+
+    <div>
+        View detailed report of expenses by clicking below link<br/><br/>
+
+        <a href="/report/" class="btn" > Report </a>
+    </div>
+
 
     <script type="text/javascript" src="{% static "js/entry.js" %}" ></script>   
 

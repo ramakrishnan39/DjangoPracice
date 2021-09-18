@@ -1,12 +1,10 @@
 /*HTML parts */
 body
 {
-    background-image: linear-gradient(green, blue);
+    background-color:burlywood;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: normal;
     color: white;
-    height: 580px;
-    width: 700px;
 }
 /* classes */
 .btn
@@ -16,8 +14,9 @@ body
     background-color:rgb(226, 94, 42);
     border-color: black;
     border-radius:0px 20px 0px 20px;
-    padding: 5px;
+    padding: 10px;
     text-decoration-line: none;
+    cursor:pointer;
 }
 .dtpk
 {
@@ -36,6 +35,8 @@ body
 .textbox
 {
     border-color: darkblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:blue;
 }
 .label
 {
@@ -48,6 +49,8 @@ body
 .tbl
 {
     background-color:blueviolet;
+    padding:20px; 
+    border: 3px;
 }
 .linkbutton
 {

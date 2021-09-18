@@ -9,5 +9,6 @@ urlpatterns = [
     path('add/<str:expense>/<int:amount>/<str:desc>/<str:expdate>', views.v_add, name='AddExp'),
     path('delete/<int:expid>/<str:expdate>', views.v_delete, name='Delete'),
     path('home/<str:sdate>',views.v_home,name='Home'),
+    path('report/',views.v_report,name="Report"),
     path('logout/',views.v_logout,name="Logout"),
 ]

@@ -22,7 +22,7 @@ def m_index(request):
     # context = {
     #     'messeges' :  mess,
     # }
-    return render(request, 'Welcome_page.html', { 'title' : 'Welcome ! ', 'messeges' :  mess })
+    return render(request, 'index.html', { 'title' : 'Welcome ! ', 'messeges' :  mess })
 
 
 def m_home(request):

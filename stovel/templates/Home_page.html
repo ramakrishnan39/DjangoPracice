@@ -5,6 +5,7 @@
     <br/>
     {% if user.is_authenticated %}
     <div> Welcome {{ user.first_name }} ! </div>
+    
     {% endif %}
     {% for message in messages %}
     {{ message }}

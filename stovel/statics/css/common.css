@@ -1,129 +1,22 @@
-html
-{
-    background-color: bisque;
-    align-content: center;
+*{
+  top: 0;
+  margin: 0;
+}
+body{
+  background-color: rgb(121, 112, 121);
+  
 }
 
-.header
-{
-    top: 0;
-    background: -webkit-linear-gradient(
-    87deg,
-    bisque,
-    red);
-    font-family: sans-serif;
-    font-weight: bold;
-    display: flex;
-    align-items: center; 
+.header{
+  background-color: rgb(50, 146, 50);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.link_login{
-    text-align: center;
-    color: black;
-    font-weight:bold;
-    background-color: sandybrown;
-    text-decoration: none;
-}
-.footer
-{
-    bottom: 0;
-    background-color: #ff9999;
-    background: -webkit-linear-gradient(
-    180deg,
-    bisque,
-    red);
-    font-family: sans-serif;
-    text-align: center;
-}
-/*For Homepage */
-#home
-{
-    width: 100%;
-    display: block;
+.title-text{
+  align-items: center;
 }
 
-#home_left, #home_right
-{
-    font-family: 'Tahoma';
-    display: inline-flex;
-    
-}
-#home_left
-{
-    background-color: #99ff99;
-    
-}
-#home_right
-{
-    font-weight: bold;
-    width: 70%;
-}
-
-/* Dropdown Button */
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 15px;
-  border: none;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 5px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #99ff99;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown   */
-.dropdown:hover .dropbtn {background-color: #3e8e41; font-weight: bold}
-
-/*For Welcome page*/
-#Welcome_screen
-{
-    height:500px;
-    width: 100%;
-    background-color: #ff33ff;
-    font-family: Calibri;
-}
-#gen_screen
-{
-    background-color: #ffccdf;
-    font-family: Calibri;
-}
-
-#login_part
-{
-    background-color: #ff33ff;
-    font-family: Tahoma;
-    height: 500px;
-    width: 100%;
-}
-#signup_part
-{
-    background-color: #ff33ff;
-    font-family: Tahoma;
-    height: 500px;
-    width: 100%;
+.nav-header{
+  align-items: center;
 }

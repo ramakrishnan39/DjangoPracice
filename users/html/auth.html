@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if mode == 'log' %}
+    Please login to explore more!!<br />
+    <br />
+    <form action="{% url 'Login' %}" id="form_login" name="form_log" method="POST">
+        {% csrf_token %}
+        Enter your username &nbsp;&nbsp;&nbsp; : <input type="text" name="txt_uname" id="txt_user" accesskey="u"
+            required="" /><br />
+        Enter your password &nbsp;&nbsp;&nbsp;&nbsp; : <input type="password" name="pwd_login" id="p_pass" accesskey="p"
+            required="" />
+        <br />
+        <input type="Submit" name="btn_login" id="button_login" value="Login" />
+        <input type="button" id="btn_sign_clr" value="Clear" onclick="document.getElementById('form_login').reset()">
+        <a href="{% url 'Index' %}"> Back </a>
+    </form>
+    
+    
+    {% endif %}
+    {% if mode == 'sign' %}
+        <form action="{% url 'Signin' %}" method="post" class="formsign">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Sign In" class="btn">
+            <a href="{% url 'Index' %}" class="btn">Back</a>
+        </form>
+    {% endif %}
+{% endblock %}

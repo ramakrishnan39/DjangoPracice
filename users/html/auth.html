@@ -1,29 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'baseskin.html' %}
 {% block content %}
     {% if mode == 'log' %}
-    Please login to explore more!!<br />
-    <br />
-    <form action="{% url 'Login' %}" id="form_login" name="form_log" method="POST">
+    Please login to explore more!!
+    <form action="{% url 'Login' %}" id="form_login" name="form_log" method="POST" class='frm' >
         {% csrf_token %}
-        Enter your username &nbsp;&nbsp;&nbsp; : <input type="text" name="txt_uname" id="txt_user" accesskey="u"
-            required="" /><br />
-        Enter your password &nbsp;&nbsp;&nbsp;&nbsp; : <input type="password" name="pwd_login" id="p_pass" accesskey="p"
+        <p>Your username </p> <input type="text" name="txt_uname" id="txt_user" accesskey="u" class="txt"
             required="" />
-        <br />
-        <input type="Submit" name="btn_login" id="button_login" value="Login" />
-        <input type="button" id="btn_sign_clr" value="Clear" onclick="document.getElementById('form_login').reset()">
-        <a href="{% url 'Index' %}"> Back </a>
+        <p>Your password </p> <input type="password" name="pwd_login" id="p_pass" accesskey="p" class="txt"
+            required="" />
+        <input type="Submit" name="btn_login" id="button_login" value="Login" class="btn link" />
+        <input type="button" id="btn_sign_clr" class="btn link" value="Clear" onclick="document.getElementById('form_login').reset()">
+        <a href="{% url 'Index' %}" class="btn link" > Back </a>
     </form>
     
     
     {% endif %}
     {% if mode == 'sign' %}
-        <form action="{% url 'Signin' %}" method="post" class="formsign">
+        <form action="{% url 'Signin' %}" id="form_sign" method="post" class="frm">
             {% csrf_token %}
-            {{ form.as_p }}
-
-            <input type="submit" value="Sign In" class="btn">
-            <a href="{% url 'Index' %}" class="btn">Back</a>
+            {% for f in form %}
+                {{ f.field.label }} 
+                {{ f }} <br>
+                {% if f.field.help_text %}
+                  <p class="helptext">  {{ f.field.help_text }} </p> <br>
+                {% endif %}    
+            {% endfor %}
+            <input type="submit" value="Sign In" class="btn link"> <input type="button" id="btn_sign_clr" class="btn link" value="Clear" onclick="document.getElementById('form_sign').reset()">
+            <a href="{% url 'Index' %}" class="btn link ">Back</a>
         </form>
     {% endif %}
 {% endblock %}

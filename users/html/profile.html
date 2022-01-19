@@ -1,0 +1,23 @@
+{% extends 'baseskin.html' %}
+
+{% block content %}
+<div>
+    <form action="/edit/" method="POST" id="frm_edit" class="frm"> 
+        {% csrf_token %}
+        <p> First Name  </p> <input type="text" class="txt" name="txt_ed_fname" value="{{ user.first_name }}" > 
+        <p> Last Name   </p> <input type="text" class="txt" name="txt_ed_lname" value="{{ user.last_name }}" > 
+        <p> Mail ID     </p> <input type="text" class="txt" name="txt_ed_mail" value="{{ user.email }}" > 
+        
+        <input type="submit" value="Edit Profile" class="btn link">
+    </form>
+</div>
+<div class="title">
+    My Books
+</div>
+<div>
+    {% for book in books %}
+        {{ book.book_name }} : {{ book.author_name }} : {{ book.publication_name }} <br/>
+    {% endfor %}
+</div> 
+
+{% endblock %}

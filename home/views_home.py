@@ -3,50 +3,28 @@ from django.urls import reverse
 from django.contrib import messages, auth
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
 from .models import Book, Friend
-from . import models
+
 # Create your views here.
 
-ps = {
-    'Home': '../home/',
-    'Profile': '../profile/',
-    'Friends': '../friends/',
-    'Logout': '../logout/',
-}
-
-
 def v_index(request):
+    if request.user.is_authenticated :
+        return redirect("Home")
     return render(request, 'index.html', { 'title' : 'Welcome ! ', })
 
 
 def v_home(request):
     bk = Book.objects.all()
-    context = {'pages': ps, 'books': bk, 'title': 'Home' }
-    return render(request, 'Home_page.html', context)
+    context = { 'books': bk, 'title': 'Home' }
+    return render(request, 'home.html', context)
 
-
-def m_login(request):
+def v_savebook(request):
     if request.method == 'POST':
-        uname = request.POST['txt_uname']
-        passwd = request.POST['pwd_login']
-        user = authenticate(username=uname,password=passwd)
-        if user is not None:
-            if user.is_active:
-                login(request,user)
-                messages.success(request, "Yeah ! you have logged in Successfuly. ")
-                bk = Book.objects.all()
-                context = {'pages': ps, 'books': bk, 'title':'Home' }
-                return redirect(reverse('home'),context=context)
-            else:
-                messages.error(request, 'Please enter a valid username')
-                return HttpResponse('Please check your Email ')
-        else:
-            messages.error(request, 'Please enter a valid username')
-            return HttpResponse('Please check your Email ')
-    elif request.method == 'GET':
-        return render(request,'registration/login.html', {'title' : 'Login' })
+        return render(request, 'home.html')
 
 def m_signin(request):
     if request.method == 'POST':

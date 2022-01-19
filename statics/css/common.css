@@ -1,16 +1,47 @@
-
-
-
-.header{
-  background-color: rgb(50, 146, 50);
+.formsign{
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 200px;
+  padding: 30px;
+  font-size: 20px;
 }
-.title-text{
-  align-items: center;
+.helptext{
+  font-size: 12px;
+}
+.frm{
+  display: grid;
+  grid-template-columns: 150px 250px;
+  column-gap: 20px; 
+  row-gap: 15px;
+  padding-top: 20px;
 }
 
-.nav-header{
-  align-items: center;
+.link{
+  background-color: aquamarine;
+  color: black;
+  outline: none;
+  border: 0;
+  border-radius: 20px;
+  padding : 5px;
+  text-decoration: none;
+}
+
+.btn{
+  width: fit-content;
+  padding: 5px;
+  align-self: center;
+  border: 2px;
+}
+
+.txt{
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: darkviolet;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  height: 30px;
+  width: inherit;
+}
+
+.txt:focus{
+  border-color: deeppink;
 }

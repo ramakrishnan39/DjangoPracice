@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stovel</title>
+
+    <link rel="stylesheet" href="{% static 'css/common.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/basestyle.css' %}" type="text/css">
+    <link rel="icon" href="{% static 'images/app_icon.png' %}" type="image/x-icon" />
+
+    <script type="text/javascript" src="{% static 'js/jquery_file.js' %}"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+
+</head>
+
+<body>
+    {% if messages %}
+        {% for message in messages %} 
+        <div id="message_div" class="messages {{ message.tags }}" >
+            <p> {{ message }} </p>
+            <button class="mess-hide" onclick="message_close()">x</button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <header class="header">
+        {% if user.is_authenticated %}
+            <div class="title-bar">
+                    <a href="{% url 'Home' %}"> <img alt="Image of Stovel app " src="{% static 'images/app_icon.png' %}" width="30px" height="30px" /> </a>
+                    <button class="app-title" onclick="location.href='/home/'" >  <h1 class="title">Stovel</h1> </button>
+            </div>
+            <nav class="nav-header">
+                <a href="{% url 'Profile'  %}"> <img src="{{ user.profile.pic.url }}" class="profile-img"> </a> 
+                <a href="{% url 'Logout' %}" class="link"> Logout </a>
+            </nav>
+        {% else %}
+            <div class="title-bar">
+                <a href="{% url 'Index' %}"> <img alt="Image of Stovel app " src="{% static 'images/app_icon.png' %}" width="30px" height="30px" /> </a>
+                <button class="app-title" onclick="location.href='/'" >   <h1 class="title">Stovel</h1> </button>
+            </div>
+            <nav class="nav-header">
+                <a class="link" href="{% url 'Login' %}"> Login </a> or 
+                <a class="link" href="{% url 'Signin' %}"> Signup </a>
+            </nav>
+        {% endif %}
+        
+    </header>
+    <section class="app">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer class="footer"> 
+        Creation of this site is in Progress.   <br />
+        You are seeing the beta version of this application.
+    </footer>
+</body>
+
+</html>

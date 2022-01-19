@@ -7,7 +7,7 @@ function call_welcome_screen()
 {
     location.href = "Welcome_page.html";
 }
-function call_home()
+function home()
 {
     location.href = "Home_page.html";
 }
@@ -18,3 +18,6 @@ function show_file()
     document.getElementById("f_name").innerHTML = fname;
 }
 
+function message_close(){
+    document.getElementById('message_div').setAttribute("style", "display:none");
+}

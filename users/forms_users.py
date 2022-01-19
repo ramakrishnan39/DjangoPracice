@@ -8,5 +8,10 @@ class CUForm(UserCreationForm):
     labels ={
       'first_name' : 'name',
     }
+  
+  def __init__(self, *args, **kwargs):
+        super(CUForm, self).__init__(*args, **kwargs)
 
+        for name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'txt'})
   

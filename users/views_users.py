@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 from home.models import Book
 from .forms_users import CUForm
 
@@ -16,7 +18,7 @@ def v_login(request):
         if user is not None:
             if user.is_active:
                 login(request,user)
-                messages.success(request, "Yeah ! you have logged in Successfuly. ")
+                messages.success(request, "Yeah "+user.first_name +"! You have logged in Successfuly. ")
                 bk = Book.objects.all()
                 context = {'pages': 'ps', 'books': bk, 'title':'Home' }
                 return redirect('Home')
@@ -40,11 +42,18 @@ def v_signin(request):
             user.save()
 
             login(request, user)
+            messages.success(request, "User is successfully registered")
             return redirect('Home')
         else:
             messages.error(request, 'An error occurred while Signing in!!')
     return render(request,'auth.html', {'title' : 'Sign In', 'mode': mode, 'form' : form })
 
-
+@login_required(login_url="Login")
 def v_profile(request):
     return render(request, 'profile.html', { 'profile' : 'In Developement' })
+
+
+def v_logout(request):
+    logout(request)
+    messages.success(request, "User successfully Logged out!")
+    return redirect("Index")

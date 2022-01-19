@@ -1,0 +1,30 @@
+{% extends 'baseskin.html' %}
+
+{% block content %}
+<div id="home_content">
+    <br/>
+    {% if user.is_authenticated %}
+      <div> Hi {{ user.first_name }} ! </div>
+    {% endif %}
+    <form action="{% url 'Savebook' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br />
+        <input type="text" class="txt" name="txt_bookname" placeholder="Book name" required="" />
+        <input type="text" class="txt" name="txt_authname" placeholder="Author name" required=""/> 
+        <input type="text" class="txt" name="txt_pubname" placeholder="Publication name" required=""/> 
+        <input type="file" name="file_bk" id="file_book" /><br />
+        <input type="submit" name="btn_submit" id="btn_submit" value="Share post">
+    </form>
+    <br />
+</div>
+<div>
+{% for bk in books %}
+    <div>
+       <a href="../user/{{ bk.posted_by.username }}" class="link_login"> {{ bk.posted_by.first_name }} </a>  <a href="{{ bk.book_file.url }}" download> {{ bk.book_name }} </a> 
+       : {{ bk.author_name }} : {{ bk.publication_name }} 
+       
+       <br/> <br/>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

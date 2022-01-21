@@ -1,9 +1,13 @@
 {% extends 'baseskin.html' %}
-
+{% load static %}
+{% block hd %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+{% endblock %}
 {% block content %}
 <div>
-    <form action="/edit/" method="POST" id="frm_edit" class="frm"> 
+    <form action="{% url 'Editprofile' %}" method="POST" id="frm_edit" class="frm"> 
         {% csrf_token %}
+        <img src="{{ profile.pic.url }}" alt="Profile Picture" class="propic" id="profile_pic" >
         <p> First Name  </p> <input type="text" class="txt" name="txt_ed_fname" value="{{ user.first_name }}" > 
         <p> Last Name   </p> <input type="text" class="txt" name="txt_ed_lname" value="{{ user.last_name }}" > 
         <p> Mail ID     </p> <input type="text" class="txt" name="txt_ed_mail" value="{{ user.email }}" > 

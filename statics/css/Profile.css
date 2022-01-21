@@ -1,0 +1,8 @@
+.propic{
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  justify-self: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}

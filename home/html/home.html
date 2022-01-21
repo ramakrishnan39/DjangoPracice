@@ -1,19 +1,22 @@
 {% extends 'baseskin.html' %}
-
+{% load static %}
+{% block hd %}
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}" type="text/css">
+{% endblock %}
 {% block content %}
 <div id="home_content">
     <br/>
     {% if user.is_authenticated %}
       <div> Hi {{ user.first_name }} ! </div>
     {% endif %}
-    <form action="{% url 'Savebook' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'Savebook' %}" method="POST" enctype="multipart/form-data" class="bookform" >
         {% csrf_token %}
-        <br />
         <input type="text" class="txt" name="txt_bookname" placeholder="Book name" required="" />
         <input type="text" class="txt" name="txt_authname" placeholder="Author name" required=""/> 
         <input type="text" class="txt" name="txt_pubname" placeholder="Publication name" required=""/> 
-        <input type="file" name="file_bk" id="file_book" /><br />
-        <input type="submit" name="btn_submit" id="btn_submit" value="Share post">
+        <label for="file_book" class="lbl" >Choose Book</label>
+        <input type="file" name="file_bk" id="file_book" hidden >
+        <input type="submit" name="btn_submit" id="btn_submit" class="btn link" value="Share post">
     </form>
     <br />
 </div>

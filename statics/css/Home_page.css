@@ -1,0 +1,15 @@
+.bookform{
+  display: grid;
+  grid-template-columns: 180px 180px 180px;
+  column-gap: 30px; 
+  row-gap: 15px;
+  padding-top: 20px;
+}
+
+.formsign{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 30px;
+  font-size: 20px;
+}

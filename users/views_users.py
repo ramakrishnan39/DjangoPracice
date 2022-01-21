@@ -52,6 +52,16 @@ def v_signin(request):
 def v_profile(request):
     return render(request, 'profile.html', { 'profile' : 'In Developement' })
 
+@login_required(login_url="Login")
+def v_edit(request):
+    if request.method == 'POST':
+        uimg = request.FILES['profile_pic']
+        ufname = request.POST['txt_ed_fname']
+        ulname = request.POST['txt_ed_lname']
+        umail = request.POST['txt_ed_mail']
+        
+        return render(request, 'Profile.html', { 'title' : 'Profile', })
+
 
 def v_logout(request):
     logout(request)

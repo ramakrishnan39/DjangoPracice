@@ -1,13 +1,8 @@
-.formsign{
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  padding: 30px;
-  font-size: 20px;
-}
+
 .helptext{
   font-size: 12px;
 }
+
 .frm{
   display: grid;
   grid-template-columns: 150px 250px;
@@ -15,9 +10,16 @@
   row-gap: 15px;
   padding-top: 20px;
 }
+.el_btn_login{
+  justify-self: flex-end;
+}
+
+.el_btn_clear{
+  justify-self: flex-start;
+}
 
 .link{
-  background-color: aquamarine;
+  background-color: rgb(240, 215, 105);
   color: black;
   outline: none;
   border: 0;
@@ -33,6 +35,11 @@
   border: 2px;
 }
 
+.lbl{
+  color: green;
+}
+
+
 .txt{
   outline: 0;
   border-width: 0 0 2px;
@@ -44,4 +51,8 @@
 
 .txt:focus{
   border-color: deeppink;
+}
+
+.propic{
+  -ms-grid-row-span: 2;
 }
